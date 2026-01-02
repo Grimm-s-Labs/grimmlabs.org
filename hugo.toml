@@ -1,0 +1,30 @@
+baseURL = 'https://grimmlabs.org/'
+languageCode = 'en-us'
+title = 'Grimm Labs'
+
+# Taxonomies: This enables the "authors" feature
+[taxonomies]
+  team = "team"
+  tag = "tags"
+  category = "categories"
+
+# Menu Configuration
+[[menu.main]]
+  name = 'About'
+  url = '/#about'
+  weight = 1
+
+[[menu.main]]
+  name = 'Team'
+  url = '/team/'
+  weight = 2
+
+[[menu.main]]
+  name = 'Projects'
+  url = '/#projects'
+  weight = 3
+
+[[menu.main]]
+  name = 'Contact'
+  url = '/#contact'
+  weight = 4

@@ -1,0 +1,28 @@
+{{ partial "header.html" . }}
+
+<section>
+    <div class="section-header">
+        <span class="mono-label">TEAM</span>
+    </div>
+    <h1>Employees</h1>
+    
+    <div class="grid" style="margin-top: 3rem;">
+        {{ range .Data.Terms }}
+        <div class="card" style="text-align: center; padding: 3rem 1rem;">
+            {{ $page := .Page }} 
+            {{ with $page }}
+                {{ if .Params.avatar }}
+                <img src="{{ .Params.avatar }}" alt="{{ .Title }}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-purple); margin-bottom: 1rem;">
+                {{ else }}
+                <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--border-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);">IMG</div>
+                {{ end }}
+                
+                <h3><a href="{{ .Permalink }}" style="text-decoration: none; color: inherit;">{{ .Title }}</a></h3>
+                <p style="font-family: var(--font-mono); font-size: 0.8rem; color: #7939a0;">{{ .Params.role | default "Researcher" }}</p>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+{{ partial "footer.html" . }}

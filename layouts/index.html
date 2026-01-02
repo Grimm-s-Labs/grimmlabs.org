@@ -1,0 +1,61 @@
+{{ partial "header.html" . }}
+
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Experimental Software &<br>Research Laboratory.</h1>
+                <p class="subtitle">We explore diverse technologies and concepts without a singular focus.</p>
+            </div>
+            <img src="images/Grimm.png" alt="Grimm Labs Logo" class="hero-image">
+        </section>
+
+        <section id="about">
+            <div class="section-header">
+                <span class="mono-label">01. THE LAB</span>
+            </div>
+            <div class="content-box">
+                <p>Grimm Labs functions as an open testing ground. We don't specialize in one vertical; instead, we build, break, and iterate on whatever captures our interest. From low-level systems to web experiments, the goal is practical research through unrestricted development.</p>
+            </div>
+        </section>
+
+        <section id="blog-preview">
+            <div class="section-header">
+                <span class="mono-label">02. BLOG POSTS</span>
+            </div>
+            <div class="grid">
+                {{ range first 3 (where .Site.RegularPages "Section" "posts") }}
+                <div class="card">
+                    <div class="card-header">
+                        <h3><a href="{{ .RelPermalink }}" style="text-decoration: none; color: inherit;">{{ .Title }}</a></h3>
+                    </div>
+                    <div class="meta" style="margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+                        {{ range .Params.team }}
+                        <span style="color: var(--accent-purple);">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    <p>{{ .Summary | truncate 100 }}</p>
+                </div>
+                {{ end }}
+            </div>
+            {{ if eq (len (where .Site.RegularPages "Section" "posts")) 0 }}
+            <p style="color: var(--text-muted); font-family: var(--font-mono);">No posts found.</p>
+            {{ end }}
+        </section>
+
+        <section id="projects">
+            <div class="section-header">
+                <span class="mono-label">03. SELECTED WORKS</span>
+            </div>
+            <p style="color: var(--text-muted); font-family: var(--font-mono);">Coming soon...</p>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <span class="mono-label">04. CONTACT</span>
+            </div>
+            <div class="contact-wrapper">
+                <p>Open for collaboration or discussion.</p>
+                <a href="mailto:contact@grimmlabs.org" class="link-arrow">Email us &rarr;</a>
+            </div>
+        </section>
+
+{{ partial "footer.html" . }}
