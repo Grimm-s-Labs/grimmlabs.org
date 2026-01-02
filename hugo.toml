@@ -28,3 +28,8 @@ title = 'Grimm Labs'
   name = 'Contact'
   url = '/#contact'
   weight = 4
+
+[[menu.main]]
+  name = 'Discord'
+  url = 'https://discord.grimmlabs.org'
+  weight = 5
