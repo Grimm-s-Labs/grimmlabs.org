@@ -8,6 +8,10 @@ title = 'Grimm Labs'
   tag = "tags"
   category = "categories"
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
 # Menu Configuration
 [[menu.main]]
   name = 'About'
