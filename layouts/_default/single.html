@@ -1,8 +1,8 @@
 {{ partial "header.html" . }}
 
-<section class="page-header">
-    <h1>{{ .Title }}</h1>
-    <div class="meta" style="font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 2rem;">
+<section class="page-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+    <h1 style="margin-bottom: 0.5rem;">{{ .Title }}</h1>
+    <div class="meta" style="font-family: var(--font-mono); color: var(--text-muted); font-size: 0.9rem;">
         <span>{{ .Date.Format "January 2, 2006" }}</span>
         <span style="margin: 0 10px;">//</span>
         <span>
@@ -13,7 +13,7 @@
     </div>
 </section>
 
-<section class="content-box">
+<section class="content-box" style="padding-top: 0;">
     {{ .Content }}
 </section>
 
