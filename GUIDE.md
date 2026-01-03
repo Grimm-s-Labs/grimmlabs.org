@@ -4,7 +4,7 @@
 
 To add a new person to the site:
 
-1.  Create a new folder in `content/authors/` with their name (e.g., `content/authors/joca/`).
+1.  Create a new folder in `content/team/` with their name (e.g., `content/team/joca/`).
 2.  Inside that folder, create an `_index.md` file.
 3.  Add the following frontmatter and content:
 
@@ -12,7 +12,7 @@ To add a new person to the site:
 ---
 title: "Joca"
 role: "Lead Researcher"
-avatar: "/images/authors/joca.jpg" # Make sure to upload the image here
+avatar: "/images/team/joca.jpg" # Make sure to upload the image here
 socials:
   github: "https://github.com/joca"
   twitter: "https://twitter.com/joca"
@@ -42,7 +42,7 @@ Your post content goes here using standard Markdown.
 ## 3. Managing Images
 
 *   **General Images:** Store them in `static/images/`.
-*   **Author Avatars:** Store them in `static/images/authors/`.
+*   **Author Avatars:** Store them in `static/images/team/`.
 *   **Post Images:** You can store them in `static/images/posts/` or use page bundles.
 
 To use an image in a post: `![Alt Text](/images/posts/image.png)`
@@ -51,5 +51,5 @@ To use an image in a post: `![Alt Text](/images/posts/image.png)`
 
 *   **Homepage:** `layouts/index.html`
 *   **Single Post:** `layouts/_default/single.html`
-*   **Employees List:** `layouts/authors/list.html`
-*   **Employee Profile:** `layouts/authors/terms.html`
+*   **Employees List:** `layouts/team/list.html`
+*   **Employee Profile:** `layouts/team/terms.html`
