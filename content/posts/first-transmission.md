@@ -1,5 +1,5 @@
 ---
-title: "Building the New Grimm Labs Architecture"
+title: "Building the New Grimm Labs Website"
 date: 2026-01-01T10:00:00Z
 draft: false
 team: ["jocadbz"]
