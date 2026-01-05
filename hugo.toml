@@ -34,6 +34,11 @@ title = 'Grimm Labs'
   weight = 4
 
 [[menu.main]]
+  name = 'Webring'
+  url = 'https://webring.grimmlabs.org'
+  weight = 5
+
+[[menu.main]]
   name = 'Discord'
   url = 'https://discord.grimmlabs.org'
-  weight = 5
+  weight = 6
