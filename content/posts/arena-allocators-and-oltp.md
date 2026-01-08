@@ -2,7 +2,7 @@
 title: "Arena Allocators and OLTP: Every Microsecond Matters"
 date: 2026-01-07T20:50:00-05:00
 draft: false
-authors: ["avi"]
+team: ["avi"]
 ---
 
 In an OLTP database processing 1 million transactions per second, every microsecond matters. Each transaction allocates dozens of temporary objects: query ASTs, execution plans, intermediate results, lock metadata. Traditional allocators we have seen in C like `malloc` spend precious cycles walking free lists and coalescing blocks. But here's the insight: transaction lifetimes are perfectly scoped - once a transaction commits or aborts, all its allocations become garbage simultaneously. This is exactly the workload pattern arena allocators were designed to dominate.
