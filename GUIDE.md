@@ -33,13 +33,33 @@ This is the biography text. It will appear on the profile page.
 title: "My New Experiment"
 date: 2026-01-01T12:00:00-00:00
 draft: false
-authors: ["joca", "grimm"] # Use the folder names from step 1
+team: ["joca", "grimm"] # Use the folder names from step 1
 ---
 
 Your post content goes here using standard Markdown.
 ```
 
-## 3. Managing Images
+## 3. Adding a Project
+
+Projects work similarly to blog posts but live in `content/projects/`.
+
+1.  Create a new markdown file in `content/projects/` (e.g., `content/projects/my-project.md`).
+2.  Use the following frontmatter:
+
+```yaml
+---
+title: "Project Name"
+date: 2026-02-01T12:00:00-05:00
+summary: "A brief description displayed on the card."
+external_url: "https://project-url.com" # Where the card links to
+team: ["joca"] # Attribution
+team_project: false # Set to true to display on the main page
+---
+```
+
+*   **team_project:** If `true`, the project appears in the "Selected Works" section of the homepage. If `false` (default), it only appears on the author's profile page.
+
+## 4. Managing Images
 
 *   **General Images:** Store them in `static/images/`.
 *   **Author Avatars:** Store them in `static/images/team/`.
@@ -47,9 +67,9 @@ Your post content goes here using standard Markdown.
 
 To use an image in a post: `![Alt Text](/images/posts/image.png)`
 
-## 4. Layouts
+## 5. Layouts
 
 *   **Homepage:** `layouts/index.html`
 *   **Single Post:** `layouts/_default/single.html`
-*   **Employees List:** `layouts/team/list.html`
-*   **Employee Profile:** `layouts/team/terms.html`
+*   **Employees List:** `layouts/team/terms.html`
+*   **Employee Profile:** `layouts/team/list.html`

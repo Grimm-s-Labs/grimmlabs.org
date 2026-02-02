@@ -45,7 +45,24 @@
             <div class="section-header">
                 <span class="mono-label">03. SELECTED WORKS</span>
             </div>
+            <div class="grid">
+                {{ range first 3 (where (where .Site.RegularPages "Section" "projects") "Params.team_project" true) }}
+                <div class="card">
+                    <div class="card-header">
+                        <h3><a href="{{ .Params.external_url | default .RelPermalink }}" target="_blank" style="text-decoration: none; color: inherit;">{{ .Title }}</a></h3>
+                    </div>
+                    <div class="meta" style="margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+                        {{ range .Params.team }}
+                        <span style="color: var(--accent-purple);">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    <p>{{ .Summary | truncate 100 }}</p>
+                </div>
+                {{ end }}
+            </div>
+            {{ if eq (len (where (where .Site.RegularPages "Section" "projects") "Params.team_project" true)) 0 }}
             <p style="color: var(--text-muted); font-family: var(--font-mono);">Coming soon...</p>
+            {{ end }}
         </section>
 
         <section id="contact">

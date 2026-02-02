@@ -1,0 +1,74 @@
+{{ partial "header.html" . }}
+
+<section>
+    <div class="section-header">
+        <span class="mono-label">DEVELOPER UTILITIES</span>
+    </div>
+    <h1>{{ .Title }}</h1>
+    
+    <div class="content-box">
+        {{ .Content }}
+    </div>
+    
+    <!-- JSON Formatter -->
+    <div class="tool-box">
+        <h2>JSON Formatter</h2>
+        <textarea id="json-input" class="tool-textarea" placeholder="Paste JSON here..." oninput="formatJSON()"></textarea>
+        <pre id="json-output" class="tool-output"></pre>
+    </div>
+
+    <!-- Base64 Encoder/Decoder -->
+    <div class="tool-box">
+        <h2>Base64 Encoder/Decoder</h2>
+        <textarea id="base64-input" class="tool-textarea" placeholder="Enter text to encode..."></textarea>
+        <div class="tool-controls">
+            <button onclick="document.getElementById('base64-output').textContent=btoa(document.getElementById('base64-input').value)" class="tool-btn">Encode</button>
+            <button onclick="document.getElementById('base64-output').textContent=atob(document.getElementById('base64-input').value)" class="tool-btn">Decode</button>
+        </div>
+        <pre id="base64-output" class="tool-output"></pre>
+    </div>
+
+    <!-- Unix Timestamp Converter -->
+    <div class="tool-box">
+        <h2>Unix Timestamp</h2>
+        <input type="number" id="timestamp-input" class="tool-input" placeholder="Enter timestamp or leave empty" oninput="convertTimestamp()">
+        <button onclick="document.getElementById('timestamp-input').value=Math.floor(Date.now()/1000);convertTimestamp()" class="tool-btn">Current Time</button>
+        <pre id="timestamp-output" class="tool-output"></pre>
+    </div>
+
+    <!-- URL Encoder/Decoder -->
+    <div class="tool-box">
+        <h2>URL Encoder/Decoder</h2>
+        <textarea id="url-input" class="tool-textarea" placeholder="Enter text or URL..."></textarea>
+        <div class="tool-controls">
+            <button onclick="document.getElementById('url-output').textContent=encodeURIComponent(document.getElementById('url-input').value)" class="tool-btn">Encode</button>
+            <button onclick="document.getElementById('url-output').textContent=decodeURIComponent(document.getElementById('url-input').value)" class="tool-btn">Decode</button>
+        </div>
+        <pre id="url-output" class="tool-output"></pre>
+    </div>
+
+    <!-- Case Converter -->
+    <div class="tool-box">
+        <h2>Case Converter</h2>
+        <textarea id="case-input" class="tool-textarea" placeholder="Enter text..." oninput="convertCase()"></textarea>
+        <pre id="case-output" class="tool-output"></pre>
+    </div>
+
+    <!-- Regex Validator -->
+    <div class="tool-box">
+        <h2>Regex Validator</h2>
+        <input type="text" id="regex-pattern" class="tool-input" placeholder="Pattern: ^\d{3}-\d{3}-\d{4}$" oninput="validateRegex()">
+        <textarea id="regex-input" class="tool-textarea" placeholder="Test text..." oninput="validateRegex()"></textarea>
+        <pre id="regex-output" class="tool-output"></pre>
+    </div>
+</section>
+
+<script>
+function formatJSON(){const i=document.getElementById('json-input'),o=document.getElementById('json-output');try{o.textContent=JSON.stringify(JSON.parse(i.value),null,2)}catch(e){o.textContent=''}}
+function convertTimestamp(){const i=document.getElementById('timestamp-input').value,o=document.getElementById('timestamp-output'),t=i?parseInt(i):Math.floor(Date.now()/1000),d=new Date(t*1000);o.textContent='Unix: '+t+'\nUTC: '+d.toUTCString()+'\nLocal: '+d.toString()+'\nISO: '+d.toISOString()}
+function convertCase(){const i=document.getElementById('case-input').value,o=document.getElementById('case-output');o.textContent='UPPER: '+i.toUpperCase()+'\nlower: '+i.toLowerCase()+'\nTitle: '+i.toLowerCase().replace(/\b\w/g,l=>l.toUpperCase())+'\ncamelCase: '+i.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g,(m,c)=>c.toUpperCase())+'\nsnake_case: '+i.replace(/[A-Z]/g,l=>'_'+l.toLowerCase()).replace(/[\s-]+/g,'_').replace(/^_/,'')+'\nkebab-case: '+i.replace(/[A-Z]/g,l=>'-'+l.toLowerCase()).replace(/[\s_]+/g,'-').replace(/^-/,'')}
+function validateRegex(){const p=document.getElementById('regex-pattern').value,i=document.getElementById('regex-input').value,o=document.getElementById('regex-output');if(!p){o.textContent='';return}try{const m=i.match(new RegExp(p,'gm'));o.textContent=m?'Matches: '+m.length+'\n'+m.map((x,n)=>(n+1)+'. "'+x+'"').join('\n'):'No matches'}catch(e){o.textContent='Invalid pattern'}}
+convertTimestamp()
+</script>
+
+{{ partial "footer.html" . }}
