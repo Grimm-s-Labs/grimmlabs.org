@@ -1,67 +1,61 @@
 {{ partial "header.html" . }}
 
-<section>
-    <div class="section-header">
-        <span class="mono-label">DEVELOPER UTILITIES</span>
-    </div>
-    <h1>{{ .Title }}</h1>
-    
-    <div class="content-box">
+<div class="contents">
+
+    <div class="page-title">{{ .Title }}</div>
+    <div class="content-body">
         {{ .Content }}
     </div>
-    
-    <!-- JSON Formatter -->
-    <div class="tool-box">
-        <h2>JSON Formatter</h2>
-        <textarea id="json-input" class="tool-textarea" placeholder="Paste JSON here..." oninput="formatJSON()"></textarea>
-        <pre id="json-output" class="tool-output"></pre>
+
+    <hr class="rule">
+
+    <div class="block">
+        <h2>json formatter</h2>
+        <textarea id="json-input" style="width:100%;min-height:6em;background:var(--c-block-bg);border:1px solid var(--c-rule);color:var(--c-fg);font-family:var(--font-mono);font-size:13px;padding:.5em .8em;" placeholder="paste json here..." oninput="formatJSON()"></textarea>
+        <pre id="json-output" style="background:var(--c-block-bg);padding:1em;overflow-x:auto;border:1px solid var(--c-rule);font-size:13px;"></pre>
     </div>
 
-    <!-- Base64 Encoder/Decoder -->
-    <div class="tool-box">
-        <h2>Base64 Encoder/Decoder</h2>
-        <textarea id="base64-input" class="tool-textarea" placeholder="Enter text to encode..."></textarea>
-        <div class="tool-controls">
-            <button onclick="document.getElementById('base64-output').textContent=btoa(document.getElementById('base64-input').value)" class="tool-btn">Encode</button>
-            <button onclick="document.getElementById('base64-output').textContent=atob(document.getElementById('base64-input').value)" class="tool-btn">Decode</button>
+    <div class="block">
+        <h2>base64 encode / decode</h2>
+        <textarea id="base64-input" style="width:100%;min-height:4em;background:var(--c-block-bg);border:1px solid var(--c-rule);color:var(--c-fg);font-family:var(--font-mono);font-size:13px;padding:.5em .8em;" placeholder="enter text to encode..."></textarea>
+        <div style="margin:.5em 0;">
+            <button onclick="document.getElementById('base64-output').textContent=btoa(document.getElementById('base64-input').value)">encode</button>
+            <button onclick="document.getElementById('base64-output').textContent=atob(document.getElementById('base64-input').value)">decode</button>
         </div>
-        <pre id="base64-output" class="tool-output"></pre>
+        <pre id="base64-output" style="background:var(--c-block-bg);padding:1em;overflow-x:auto;border:1px solid var(--c-rule);font-size:13px;"></pre>
     </div>
 
-    <!-- Unix Timestamp Converter -->
-    <div class="tool-box">
-        <h2>Unix Timestamp</h2>
-        <input type="number" id="timestamp-input" class="tool-input" placeholder="Enter timestamp or leave empty" oninput="convertTimestamp()">
-        <button onclick="document.getElementById('timestamp-input').value=Math.floor(Date.now()/1000);convertTimestamp()" class="tool-btn">Current Time</button>
-        <pre id="timestamp-output" class="tool-output"></pre>
+    <div class="block">
+        <h2>unix timestamp</h2>
+        <input type="number" id="timestamp-input" style="width:100%;background:var(--c-block-bg);border:1px solid var(--c-rule);color:var(--c-fg);font-family:var(--font-mono);font-size:13px;padding:.5em .8em;" placeholder="enter timestamp or leave empty" oninput="convertTimestamp()">
+        <button onclick="document.getElementById('timestamp-input').value=Math.floor(Date.now()/1000);convertTimestamp()">current time</button>
+        <pre id="timestamp-output" style="background:var(--c-block-bg);padding:1em;overflow-x:auto;border:1px solid var(--c-rule);font-size:13px;"></pre>
     </div>
 
-    <!-- URL Encoder/Decoder -->
-    <div class="tool-box">
-        <h2>URL Encoder/Decoder</h2>
-        <textarea id="url-input" class="tool-textarea" placeholder="Enter text or URL..."></textarea>
-        <div class="tool-controls">
-            <button onclick="document.getElementById('url-output').textContent=encodeURIComponent(document.getElementById('url-input').value)" class="tool-btn">Encode</button>
-            <button onclick="document.getElementById('url-output').textContent=decodeURIComponent(document.getElementById('url-input').value)" class="tool-btn">Decode</button>
+    <div class="block">
+        <h2>url encode / decode</h2>
+        <textarea id="url-input" style="width:100%;min-height:4em;background:var(--c-block-bg);border:1px solid var(--c-rule);color:var(--c-fg);font-family:var(--font-mono);font-size:13px;padding:.5em .8em;" placeholder="enter text or url..."></textarea>
+        <div style="margin:.5em 0;">
+            <button onclick="document.getElementById('url-output').textContent=encodeURIComponent(document.getElementById('url-input').value)">encode</button>
+            <button onclick="document.getElementById('url-output').textContent=decodeURIComponent(document.getElementById('url-input').value)">decode</button>
         </div>
-        <pre id="url-output" class="tool-output"></pre>
+        <pre id="url-output" style="background:var(--c-block-bg);padding:1em;overflow-x:auto;border:1px solid var(--c-rule);font-size:13px;"></pre>
     </div>
 
-    <!-- Case Converter -->
-    <div class="tool-box">
-        <h2>Case Converter</h2>
-        <textarea id="case-input" class="tool-textarea" placeholder="Enter text..." oninput="convertCase()"></textarea>
-        <pre id="case-output" class="tool-output"></pre>
+    <div class="block">
+        <h2>case converter</h2>
+        <textarea id="case-input" style="width:100%;min-height:4em;background:var(--c-block-bg);border:1px solid var(--c-rule);color:var(--c-fg);font-family:var(--font-mono);font-size:13px;padding:.5em .8em;" placeholder="enter text..." oninput="convertCase()"></textarea>
+        <pre id="case-output" style="background:var(--c-block-bg);padding:1em;overflow-x:auto;border:1px solid var(--c-rule);font-size:13px;"></pre>
     </div>
 
-    <!-- Regex Validator -->
-    <div class="tool-box">
-        <h2>Regex Validator</h2>
-        <input type="text" id="regex-pattern" class="tool-input" placeholder="Pattern: ^\d{3}-\d{3}-\d{4}$" oninput="validateRegex()">
-        <textarea id="regex-input" class="tool-textarea" placeholder="Test text..." oninput="validateRegex()"></textarea>
-        <pre id="regex-output" class="tool-output"></pre>
+    <div class="block">
+        <h2>regex validator</h2>
+        <input type="text" id="regex-pattern" style="width:100%;background:var(--c-block-bg);border:1px solid var(--c-rule);color:var(--c-fg);font-family:var(--font-mono);font-size:13px;padding:.5em .8em;" placeholder="pattern: ^\d{3}-\d{3}-\d{4}$" oninput="validateRegex()">
+        <textarea id="regex-input" style="width:100%;min-height:4em;background:var(--c-block-bg);border:1px solid var(--c-rule);color:var(--c-fg);font-family:var(--font-mono);font-size:13px;padding:.5em .8em;" placeholder="test text..." oninput="validateRegex()"></textarea>
+        <pre id="regex-output" style="background:var(--c-block-bg);padding:1em;overflow-x:auto;border:1px solid var(--c-rule);font-size:13px;"></pre>
     </div>
-</section>
+
+</div>
 
 <script>
 function formatJSON(){const i=document.getElementById('json-input'),o=document.getElementById('json-output');try{o.textContent=JSON.stringify(JSON.parse(i.value),null,2)}catch(e){o.textContent=''}}

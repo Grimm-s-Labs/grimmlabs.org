@@ -6,20 +6,19 @@
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     <link rel="icon" href="{{ "favicon.ico" | relURL }}">
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="noise-overlay"></div>
-    
-    <header>
-        <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Grimm Labs</a></div>
-        <nav>
-            {{ range .Site.Menus.main }}
-            <a href="{{ .URL }}">{{ .Name }}</a>
-            {{ end }}
-        </nav>
-    </header>
 
-    <main>
+<nav class="topbar">
+    <a href="/" style="color: var(--c-accent); font-weight: 700; text-decoration: none;">~grimm</a>
+    {{ range .Site.Menus.main }}
+    <a href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+</nav>
+
+{{ if .IsHome }}
+<div class="banner-area">
+    <img src="{{ "images/Grimm.png" | relURL }}" alt="Grimm Labs">
+    <div class="banner-sub">experimental software laboratory <span style="color:var(--c-rule);">·</span> art by <a href="https://vgen.co/yoruneart" target="_blank">@yoruneart</a></div>
+</div>
+{{ end }}

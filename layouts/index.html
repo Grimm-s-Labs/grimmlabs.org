@@ -1,82 +1,75 @@
 {{ partial "header.html" . }}
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Experimental Software Laboratory.</h1>
-                <p class="subtitle">Coding for the sake of coding.</p>
-            </div>
-            <div style="display: flex; flex-direction: column; align-items: center; margin-left: 2rem;">
-                <img src="images/Grimm.png" alt="Grimm Labs Logo" class="hero-image" style="margin-left: 0;">
-                <span style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.5rem; font-family: var(--font-mono); opacity: 0.7;">
-                    Art made by <a href="https://vgen.co/yoruneart" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dotted var(--text-muted);">@yoruneart</a>
-                </span>
-            </div>
-        </section>
 
-        <section id="about">
-            <div class="section-header">
-                <span class="mono-label">01. THE LAB</span>
-            </div>
-            <div class="content-box">
-                <p>Grimm Labs is mostly our Discord server — an open playground where we tinker, break things, and occasionally ship something cool. No single focus, no pressure, just whatever the group feels like hacking on: low-level systems, web toys, experiments, and weird stuff. Come hang out if you want to build (or just watch us).</p>
-            </div>
-        </section>
+<div class="contents">
 
-        <section id="blog-preview">
-            <div class="section-header">
-                <span class="mono-label">02. BLOG POSTS</span>
-            </div>
-            <div class="grid">
-                {{ range first 3 (where .Site.RegularPages "Section" "posts") }}
-                <div class="card">
-                    <div class="card-header">
-                        <h3><a href="{{ .RelPermalink }}" style="text-decoration: none; color: inherit;">{{ .Title }}</a></h3>
-                    </div>
-                    <div class="meta" style="margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
-                        {{ range .Params.team }}
-                        <span style="color: var(--accent-purple);">{{ . }}</span>
-                        {{ end }}
-                    </div>
-                    <p>{{ .Summary | truncate 100 }}</p>
-                </div>
-                {{ end }}
-            </div>
-            {{ if eq (len (where .Site.RegularPages "Section" "posts")) 0 }}
-            <p style="color: var(--text-muted); font-family: var(--font-mono);">No posts found.</p>
+    <hr class="rule">
+
+    <div class="section-label">services</div>
+    <table class="service-table">
+        <thead>
+            <tr><th>host</th><th>service</th><th>description</th></tr>
+        </thead>
+        <tbody>
+        {{ range .Site.Data.services.services }}
+            <tr>
+                <td><a rel="{{ .type }}" href="{{ .url }}" target="_blank">{{ .name }}</a></td>
+                <td>{{ .type }}</td>
+                <td>{{ .desc }}</td>
+            </tr>
+        {{ end }}
+        </tbody>
+    </table>
+
+    <hr class="rule">
+
+    <div class="section-label">about</div>
+    <div class="block">
+        <p>Grimm Labs is a group of open-source enthusiasts that want to provide services for the community.</p>
+    </div>
+
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ if $posts }}
+    <hr class="rule">
+
+    <div class="section-label">blog posts</div>
+    <div class="block">
+        <ul class="entry-list">
+            {{ range first 5 $posts }}
+            <li>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <span class="meta">{{ .Date.Format "2006-01-02" }}{{ range .Params.team }} &middot; {{ . }}{{ end }}</span>
+                {{ if .Summary }}<span class="summary">{{ .Summary | truncate 80 }}</span>{{ end }}
+            </li>
             {{ end }}
-        </section>
+        </ul>
+    </div>
+    {{ end }}
 
-        <section id="projects">
-            <div class="section-header">
-                <span class="mono-label">03. SELECTED WORKS</span>
-            </div>
-            <div class="grid">
-                {{ range first 3 (where (where .Site.RegularPages "Section" "projects") "Params.team_project" true) }}
-                <div class="card">
-                    <div class="card-header">
-                        <h3><a href="{{ .Params.external_url | default .RelPermalink }}" target="_blank" style="text-decoration: none; color: inherit;">{{ .Title }}</a></h3>
-                    </div>
-                    <div class="meta" style="margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
-                        {{ range .Params.team }}
-                        <span style="color: var(--accent-purple);">{{ . }}</span>
-                        {{ end }}
-                    </div>
-                    <p>{{ .Summary | truncate 100 }}</p>
-                </div>
-                {{ end }}
-            </div>
-            {{ if eq (len (where (where .Site.RegularPages "Section" "projects") "Params.team_project" true)) 0 }}
-            <p style="color: var(--text-muted); font-family: var(--font-mono);">Coming soon...</p>
+    {{ $projects := where (where .Site.RegularPages "Section" "projects") "Params.team_project" true }}
+    {{ if $projects }}
+    <hr class="rule">
+
+    <div class="section-label">projects</div>
+    <div class="block">
+        <ul class="entry-list">
+            {{ range first 5 $projects }}
+            <li>
+                <a href="{{ .Params.external_url | default .RelPermalink }}" target="_blank">{{ .Title }}</a>
+                <span class="meta">{{ .Date.Format "2006-01-02" }}</span>
+                {{ if .Summary }}<span class="summary">{{ .Summary | truncate 80 }}</span>{{ end }}
+            </li>
             {{ end }}
-        </section>
+        </ul>
+    </div>
+    {{ end }}
 
-        <section id="contact">
-            <div class="section-header">
-                <span class="mono-label">04. CONTACT</span>
-            </div>
-            <div class="contact-wrapper">
-                <p>Open for collaboration or discussion.</p>
-                <a href="mailto:contact@jocadbz.xyz" class="link-arrow">Email us &rarr;</a>
-            </div>
-        </section>
+    <hr class="rule">
+
+    <div class="section-label">contact</div>
+    <div class="block">
+        <p>open for collaboration or discussion &mdash; <a href="mailto:contact@jocadbz.xyz">contact@jocadbz.xyz</a></p>
+    </div>
+
+</div>
 
 {{ partial "footer.html" . }}

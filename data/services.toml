@@ -1,0 +1,23 @@
+[[services]]
+name = "grimmlabs.org"
+url = "https://grimmlabs.org"
+type = "matrix"
+desc = "federated encrypted messaging"
+
+[[services]]
+name = "git.jocadbz.xyz"
+url = "https://git.jocadbz.xyz"
+type = "gitea"
+desc = "self-hosted git service"
+
+[[services]]
+name = "discord.grimmlabs.org"
+url = "https://discord.grimmlabs.org"
+type = "discord"
+desc = "community chat and collaboration"
+
+[[services]]
+name = "webring.grimmlabs.org"
+url = "https://webring.grimmlabs.org"
+type = "webring"
+desc = "interconnected community ring"
